@@ -1,6 +1,6 @@
-var moneyLeft = 123456789;
+var moneyLeft = 12345;
 var lottoCost = 1000;
-var lottoWins = 1234;
+var lottoWins = 5000;
 
 
 document.getElementById("money-left").innerHTML = moneyLeft;
@@ -36,10 +36,16 @@ function winner() {
 }
 
 function lotteryGo() {
-    purchaseTicket();
-    var userNum = userNumberPicker();
-    var lottoNum = lotteryNumberPicker();
-    if (didUserWin(userNum, lottoNum)) {
-        winner();
+    if (moneyLeft > 0) {
+        purchaseTicket();
+        var userNum = userNumberPicker();
+        var lottoNum = lotteryNumberPicker();
+        if (didUserWin(userNum, lottoNum)) {
+            winner();
+        }    
+    } else {
+        window.location = "http://www.gamblersanon.org";
     }
 }
+
+document.getElementById('buy').addEventListener('click', lotteryGo);
